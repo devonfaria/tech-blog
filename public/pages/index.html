@@ -11,15 +11,32 @@
 <body>
   <header>
     <nav>
-      <a href="">Home</a>
-      <a href="">Dashboard</a>
-      <a href="">Login</a>
-      <a href="">Logout</a>
+      <div class="home">Home</div>
+      <div class="dashboard">Dashboard</div>
+      <div class="login">Login</div>
+      <div class="logout">Logout</div>
     </nav>
     <h1>Tech Blog</h1>
   </header>
   <main>
-
+    <div class="login-block hidden">
+      <div class="login-header"></div>
+      <div class="login-body">
+        <input class=username type="text" subtitle="Username">
+        <input class=password type="text" subtitle="Password">
+        <button class="submit">Submit</button>
+        
+      </div>
+    </div>
+    <div class="sign-up hidden">
+      <div class="sign-up-header"></div>
+      <div class="sign-up-body">
+        <input class=username2 type="text" subtitle="Username">
+        <input class=password2 type="text" subtitle="Password">
+        <button class="submit">Submit</button>
+      </div>
+    </div>
   </main>
+  <script src="../js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,17 @@
+.hidden {
+  display: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
+nav div {
+  display: flex;
+  padding: 1rem;
+}
+
+nav div:hover {
+  background-color: aqua;
+}
