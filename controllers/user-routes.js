@@ -5,18 +5,28 @@ const bcrypt = require('bcrypt');
 // Validate a user
 router.get('/login', async (req, res) => {
   try {
-    const userData = await User.find({
+    const userData = await User.findOne({
       where: {
         username: req.body.username,
-        password: req.body.password,
       }
     });
-    // ADD BCRYPT HERE
     if (!userData) {
       res.json('Sorry, user not found');
     } else {
-      res.json('User logged in');
+      bcrypt.compare(req.body.password, userData.password, function (err, res) {
+        if (err) {
+          console.log(err);
+        }
+        else if (res) {
+          console.log('Login successful!');
+        } else {
+          // response is OutgoingMessage object that server response http request
+          console.log('Passwords do not match');
+          return;
+        }
+      });
     };
+    res.json('Compared passwords');
   } catch (err) {
     res.status(400).json(err);
   }
