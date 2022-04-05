@@ -1,7 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const moment = require('moment');
-console.log(moment().format('L'));
 
 class Post extends Model { }
 
