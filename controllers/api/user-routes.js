@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/User');
+const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 
 // Validate a user
@@ -33,7 +33,7 @@ router.get('/login', async (req, res) => {
 });
 
 
-// get ALL Users
+// Get all Users
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({});
@@ -62,8 +62,8 @@ router.post('/newuser', async (req, res) => {
   }
 });
 
+// Update User
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
   User.update({
     username: req.body.username,
     password: req.body.password
