@@ -29,13 +29,12 @@ router.get('/posts', async (req, res) => {
   }
 });
 
-
 // Renders the log-in screen if session is not logged in
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
   res.render('login');
 });
 
