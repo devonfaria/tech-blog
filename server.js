@@ -6,10 +6,11 @@ const session = require('express-session');
 const sequelize = require('./config/connection')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const routes = require('./controllers');
+const helpers = require('./utils/helpers');
 
 // Initializing Express, Handlebars, and PORT
 const app = express();
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 const PORT = process.env.PORT || 3001;
 
 // Setting Handlebars as the template engine
@@ -27,7 +28,7 @@ const sess = {
   secret: '15267899-eb9e-4b69-ba46-7a6a85efddba',
   cookie: {
     // Length of each login session
-    maxAge: 3600,
+    maxAge: 86400,
     // makes cross-site scripting attacks (XSS) impossible
     httpOnly: true,
     // requires https or not

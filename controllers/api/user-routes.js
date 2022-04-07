@@ -20,7 +20,6 @@ router.get('/login', async (req, res) => {
         else if (res) {
           console.log('Login successful!');
         } else {
-          // response is OutgoingMessage object that server response http request
           console.log('Passwords do not match');
           return;
         }
