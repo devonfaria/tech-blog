@@ -1,21 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-  <div class="flex-column">
-    <header class="display-flex">
-      <h1>
-        <a href="/">Tech Blog</a>
-      </h1>
-    </header>
-      <main class="container">
-        {{{ body }}}
-      </main>
-  </div>
-  </body>
+  <header>
+    <img src="/images/node.png" alt="Tech Blog">
+  </header>
+  <nav>
+    <a href="/"><button>Home</button></a>
+    <a href="/listings"><button>Listings</button></a>
+    {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">Logout</button>
+    {{else}}
+    <a href="/login"><button>Login</button></a>
+    {{/if}}
+  </nav>
+  <main>
+    <div class="listings">
+      {{{ body }}}
+    </div>
+  </main>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
 
 </html>
