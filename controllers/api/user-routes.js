@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const User = require('../../models/User');
+// const User = require('../../models/User');
+const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 
 // Validate User and log in
@@ -7,14 +8,14 @@ router.post('/login', async (req, res) => {
   try {
     // Uses email to find cooresponding user
     const userData = await User.findOne({ where: { email: req.body.email } });
+    console.log(userData);
     if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+      res.status(400).json({ message: 'Incorrect email or password, please try again' });
       return;
     }
+
     // Validates password
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await bcrypt.compareSync(req.body.password, userData.password);
     if (!validPassword) {
       res
         .status(400)
@@ -30,50 +31,17 @@ router.post('/login', async (req, res) => {
         req.session.cookie
       ),
         res.json({ user: userData, message: 'You are now logged in!' });
-
     });
-
-
   } catch (err) {
+    console.log('Catch in validate triggered');
     res.status(400).json(err);
   }
 });
-
-// // Validate a user
-// router.get('/login', async (req, res) => {
-//   try {
-//     const userData = await User.findOne({
-//       where: {
-//         username: req.body.username,
-//       }
-//     });
-//     if (!userData) {
-//       res.json('Sorry, user not found');
-//     } else {
-//       bcrypt.compare(req.body.password, userData.password, function (err, res) {
-//         if (err) {
-//           console.log(err);
-//         }
-//         else if (res) {
-//           console.log('Login successful!');
-//         } else {
-//           console.log('Passwords do not match');
-//           return;
-//         }
-//       });
-//     };
-//     res.json('Compared passwords');
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
 
 // Get all Users
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({});
-    // ADD BCRYPT HERE
     if (!userData) {
       res.json('No users');
     } else {
@@ -91,7 +59,7 @@ router.post('/newuser', async (req, res) => {
     userData.password = await bcrypt.hash(req.body.password, 10);
     console.log('Password: ', userData.password);
     const newUser = await User.create(userData);
-    // We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
+
     res.status(200).json(newUser);
   } catch (err) {
     res.status(500).json(err);
