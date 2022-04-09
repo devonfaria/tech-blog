@@ -15,6 +15,7 @@ const newCommentHandler = async (event) => {
     if (response.ok) {
       // document.location.replace('/posts');
       alert('Comment created.');
+      document.location.replace(`/posts/${postId}`);
     } else {
       alert('Failed to comment.');
     };
