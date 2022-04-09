@@ -5,7 +5,9 @@ const serialize = require('../utils/serialize');
 // Loads Homepage
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage');
+    res.render('homepage', {
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -31,9 +33,12 @@ router.get('/posts', async (req, res) => {
 // Loads Add Post page
 router.get('/addpost', (req, res) => {
   if (req.session.loggedIn) {
-    res.render('addpost');
+    res.render('addpost',
+      {
+        loggedIn: req.session.loggedIn,
+      });
   }
-  res.render('login');
+  res.render('login',);
 });
 
 // Renders the log-in screen if session is not logged in
