@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
       (post) => serialize(post));
     res.render('homepage', {
       posts,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
