@@ -28,6 +28,14 @@ router.get('/posts', async (req, res) => {
   }
 });
 
+// Loads Add Post page
+router.get('/addpost', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('addpost');
+  }
+  res.render('login');
+});
+
 // Renders the log-in screen if session is not logged in
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
