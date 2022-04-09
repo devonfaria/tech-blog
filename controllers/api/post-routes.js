@@ -5,7 +5,6 @@ const Post = require('../../models/Post');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({});
-    // ADD BCRYPT HERE
     if (!postData) {
       res.json('No posts');
     } else {

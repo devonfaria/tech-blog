@@ -18,10 +18,9 @@ router.get('/posts', async (req, res) => {
     const dbPostData = await Post.findAll({});
     const posts = dbPostData.map(
       (post) => serialize(post));
-    console.log('Posts: ', posts);
     res.render('allposts', {
-      posts
-      // loggedIn: req.session.loggedIn,
+      posts,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -31,18 +30,21 @@ router.get('/posts', async (req, res) => {
 
 // Renders the log-in screen if session is not logged in
 router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  if (req.session.loggedIn) {
+    return res.redirect('/');
+  }
   res.render('login');
 });
 
+// Renders sign-up page, and logs user out if signing up as new user
 router.get('/signup', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+    res.render('signup');
+    return;
+  }
   res.render('signup');
 });
 

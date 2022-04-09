@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const User = require('../../models/User');
 const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 
@@ -8,7 +7,6 @@ router.post('/login', async (req, res) => {
   try {
     // Uses email to find cooresponding user
     const userData = await User.findOne({ where: { email: req.body.email } });
-    console.log(userData);
     if (!userData) {
       res.status(400).json({ message: 'Incorrect email or password, please try again' });
       return;
@@ -80,6 +78,17 @@ router.put('/:id', (req, res) => {
   ).then((update) => {
     res.json(update);
   });
+});
+
+// Logout User
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 
