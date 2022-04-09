@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
 const router = require('express').Router();
 const serialize = require('../utils/serialize');
 
@@ -36,14 +37,20 @@ router.get('/posts', async (req, res) => {
 // Loads Posts page
 router.get('/posts/:id', async (req, res) => {
   try {
-    const postData = await Post.findByPk({
+    const postData = await Post.findByPk(req.params.id);
+    const commentData = await Comment.findAll({
       where: {
-        id: req.params.id
+        post_id: req.params.id
       }
-    })
+    });
+
     const post = serialize(postData);
-    res.render('allposts', {
-      posts,
+    const comments = serialize(commentData);
+    console.log('Post: ', post);
+    console.log('Comments: ', comments);
+    res.render('single-post', {
+      post,
+      comments,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
