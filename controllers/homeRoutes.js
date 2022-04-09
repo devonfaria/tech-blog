@@ -5,8 +5,11 @@ const serialize = require('../utils/serialize');
 // Loads Homepage
 router.get('/', async (req, res) => {
   try {
+    const dbPostData = await Post.findAll({});
+    const posts = dbPostData.map(
+      (post) => serialize(post));
     res.render('homepage', {
-      loggedIn: req.session.loggedIn,
+      posts,
     });
   } catch (err) {
     console.log(err);
@@ -20,6 +23,25 @@ router.get('/posts', async (req, res) => {
     const dbPostData = await Post.findAll({});
     const posts = dbPostData.map(
       (post) => serialize(post));
+    res.render('allposts', {
+      posts,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Loads Posts page
+router.get('/posts/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk({
+      where: {
+        id: req.params.id
+      }
+    })
+    const post = serialize(postData);
     res.render('allposts', {
       posts,
       loggedIn: req.session.loggedIn,
