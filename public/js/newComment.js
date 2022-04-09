@@ -1,10 +1,13 @@
 const newCommentHandler = async (event) => {
   event.preventDefault();
+  const form = document.querySelector('.comment-form');
+  const formId = form.attributes.id.value;
+  console.log('Form ID: ', formId);
 
   // Grab values from form input
   const comment = document.getElementById('comment').value.trim();
   const userId = 1;
-  const postId = 1;
+  const postId = formId;
   // Makes Post request to add comment
   if (comment && userId && postId) {
     const response = await fetch('/api/comments', {
