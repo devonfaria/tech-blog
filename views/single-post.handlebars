@@ -10,11 +10,27 @@
   </div>
 </div>
 <br>
+<h4>Comments</h4>
+<br>
 {{#each comments}}
 {{> comment-card}}
 {{/each}}
-{{#if loggedIn}}
 
+{{#if loggedIn}}
+<div class="row justify-space-between-md">
+  <div class="comment-card">
+    <h2 class="page-title">Add Comment</h2>
+    <form class="form comment-form">
+      <div class="form-group">
+        <label for="comment">Write your comment below: </label>
+        <input class="form-input" type="text" id="comment" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
 {{else}}
 <h1>You need to log in to leave comments!</h1>
 <a href="/login"><button>Login</button></a>
