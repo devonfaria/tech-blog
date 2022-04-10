@@ -1,12 +1,17 @@
-const Post = require('../models/Post');
-const Comment = require('../models/Comment');
+// const Post = require('../models/Post');
+// const Comment = require('../models/Comment');
 const router = require('express').Router();
 const serialize = require('../utils/serialize');
+const { Comment, User, Post } = require('../models');
 
 // Loads Homepage
 router.get('/', async (req, res) => {
   try {
-    const dbPostData = await Post.findAll({});
+    const dbPostData = await Post.findAll({
+      include: [{
+        model: User
+      }]
+    });
     const posts = dbPostData.map(
       (post) => serialize(post));
     res.render('homepage', {
@@ -25,7 +30,11 @@ router.get('/dashboard', async (req, res) => {
     const dbPostData = await Post.findAll({
       where: {
         user_id: 1
+      },
+      include: [{
+        model: User
       }
+      ],
     });
     const posts = dbPostData.map(
       (post) => serialize(post));
@@ -42,7 +51,11 @@ router.get('/dashboard', async (req, res) => {
 // Loads Posts page
 router.get('/posts', async (req, res) => {
   try {
-    const dbPostData = await Post.findAll({});
+    const dbPostData = await Post.findAll({
+      include: [{
+        model: User
+      }]
+    });
     const posts = dbPostData.map(
       (post) => serialize(post));
     res.render('allposts', {
@@ -62,7 +75,10 @@ router.get('/posts/:id', async (req, res) => {
     const commentData = await Comment.findAll({
       where: {
         post_id: req.params.id
-      }
+      },
+      include: [{
+        model: User
+      }]
     });
 
     const post = serialize(postData);
