@@ -12,7 +12,11 @@
   </div>
 </div> --}}
 <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">{{title}}</div>
+  <div class="card-header">
+    <a href="/posts/{{id}}">
+      <h3>{{title}}</h3>
+    </a>
+  </div>
   <div class="card-body">
     <h5 class="card-title">Posted by {{user.username}} on {{format_date createdAt}}</h5>
     <p class="card-text">{{content}}</p>

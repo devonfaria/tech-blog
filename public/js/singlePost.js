@@ -4,6 +4,7 @@ const newCommentHandler = async (event) => {
   const comment = document.getElementById('comment').value.trim();
   const postId = document.querySelector('.comment-form').attributes.id.value;
   // Makes Post request to add comment
+  console.log(comment, postId);
   if (comment && postId) {
     const response = await fetch('/api/comments', {
       method: 'POST',
@@ -45,7 +46,7 @@ const displayForm = () => {
 
 const updatePost = async (event) => {
   event.preventDefault();
-  const postId = document.querySelector('.comment-form').attributes.id.value;
+  const postId = document.querySelector('.update-form').attributes.id.value;
   const title = document.getElementById('title').value.trim();
   const content = document.getElementById('content').value.trim();
   if (postId && content) {

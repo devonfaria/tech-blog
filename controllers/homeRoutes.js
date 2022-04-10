@@ -111,12 +111,13 @@ router.get('/posts/:id', async (req, res) => {
 // Loads Add Post page
 router.get('/addpost', (req, res) => {
   if (req.session.loggedIn) {
-    res.render('addpost',
-      {
-        loggedIn: req.session.loggedIn,
-      });
+    res.render('addpost', {
+      loggedIn: req.session.loggedIn,
+    });
   }
-  res.render('login',);
+  res.render('login', {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 // Renders the log-in screen if session is not logged in

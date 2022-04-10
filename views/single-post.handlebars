@@ -19,7 +19,7 @@
 <div class="row justify-space-between-md">
   <div class="update-card hidden">
     <h2 class="page-title">Update your post</h2>
-    <form class="form comment-form" id="{{post.id}}">
+    <form class="form update-form" id="{{post.id}}">
       <div class="form-group">
         <label for="title">New post title: </label>
         <input class="form-input" type="text" id="title" />
@@ -43,14 +43,14 @@
 {{#if loggedIn}}
 <form class="g-3 form comment-form" id="{{post.id}}">
   <div class="mb-3 mt-3">
-    <label for="formGroupExampleInput2" class="form-label">New comment</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2 comment" placeholder="Write your comment here">
+    <label for="comment" class="form-label">New comment</label>
+    <input type="text" class="form-control" id="comment" placeholder="Write your comment here">
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Create Comment</button>
   </div>
 </form>
 {{else}}
-<h1>You need to log in to leave comments!</h1>
+<h3>You need to log in to leave comments!</h3>
 <a href="/login"><button>Login</button></a>
 {{/if}}
