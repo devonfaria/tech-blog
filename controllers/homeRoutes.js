@@ -72,7 +72,14 @@ router.get('/posts', async (req, res) => {
 // Loads single Post page
 router.get('/posts/:id', async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id);
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: User
+      }]
+    });
     const commentData = await Comment.findAll({
       where: {
         post_id: req.params.id
