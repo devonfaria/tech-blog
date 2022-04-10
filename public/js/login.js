@@ -1,6 +1,6 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
-
+  console.log('Submitted!');
   // Grab values from form input
   const email = document.getElementById('email-login').value.trim();
   const password = document.getElementById('password-login').value.trim();
