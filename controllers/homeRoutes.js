@@ -19,6 +19,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Loads Dashboard page
+router.get('/dashboard', async (req, res) => {
+  try {
+    const dbPostData = await Post.findAll({
+      where: {
+        user_id: 1
+      }
+    });
+    const posts = dbPostData.map(
+      (post) => serialize(post));
+    res.render('dashboard', {
+      posts,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Loads Posts page
 router.get('/posts', async (req, res) => {
   try {
@@ -35,7 +55,7 @@ router.get('/posts', async (req, res) => {
   }
 });
 
-// Loads Posts page
+// Loads single Post page
 router.get('/posts/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);

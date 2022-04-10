@@ -2,7 +2,6 @@ const newCommentHandler = async (event) => {
   event.preventDefault();
   const form = document.querySelector('.comment-form');
   const formId = form.attributes.id.value;
-  console.log('Form ID: ', formId);
 
   // Grab values from form input
   const comment = document.getElementById('comment').value.trim();
