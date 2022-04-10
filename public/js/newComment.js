@@ -5,7 +5,7 @@ const newCommentHandler = async (event) => {
 
   // Grab values from form input
   const comment = document.getElementById('comment').value.trim();
-  const userId = 1;
+  const userId = req.session.user_id;
   const postId = formId;
   // Makes Post request to add comment
   if (comment && userId && postId) {
@@ -16,7 +16,6 @@ const newCommentHandler = async (event) => {
     });
     if (response.ok) {
       // document.location.replace('/posts');
-      alert('Comment created.');
       document.location.replace(`/posts/${postId}`);
     } else {
       alert('Failed to comment.');

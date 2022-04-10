@@ -1,10 +1,16 @@
 const router = require('express').Router();
-const Post = require('../../models/Post');
+const { Comment, User, Post } = require('../../models');
 
 // get ALL Posts
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll({});
+    const postData = await Post.findAll({
+      include: [{
+        model: User
+      }, {
+        model: Comment
+      }]
+    });
     if (!postData) {
       res.json('No posts');
     } else {

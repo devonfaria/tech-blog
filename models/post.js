@@ -24,7 +24,7 @@ Post.init(
       allowNull: false,
       foreignKey: true,
       references: {
-        model: 'user',
+        model: 'User',
         key: 'id',
       }
     }

@@ -1,10 +1,18 @@
 const router = require('express').Router();
-const Comment = require('../../models/Comment');
+const { Comment, User, Post } = require('../../models');
 
 // Get ALL Comments
 router.get('/', async (req, res) => {
   try {
-    const dbCommentData = await Comment.findAll({});
+    const dbCommentData = await Comment.findAll({
+      include: [{
+        model: User
+      },
+      {
+        model: Post
+      }
+      ],
+    });
     if (!dbCommentData) {
       res.json('No comments');
     } else {
@@ -15,7 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Create Post
+// Create Comment
 router.post('/', async (req, res) => {
   try {
     const newComment = await Comment.create({

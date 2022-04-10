@@ -17,20 +17,20 @@ Comment.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      foreignKey: true,
+      // allowNull: false,
+      // foreignKey: true,
       references: {
         model: 'user',
-        key: 'id',
+        key: 'id'
       }
     },
     post_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      foreignKey: true,
+      // allowNull: false,
+      // foreignKey: true,
       references: {
         model: 'post',
-        key: 'id',
+        key: 'id'
       }
     }
   },
@@ -39,7 +39,7 @@ Comment.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Comment',
+    modelName: 'comment',
   }
 );
 
