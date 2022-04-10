@@ -1,5 +1,3 @@
-// const Post = require('../models/Post');
-// const Comment = require('../models/Comment');
 const router = require('express').Router();
 const serialize = require('../utils/serialize');
 const { Comment, User, Post } = require('../models');
@@ -27,21 +25,24 @@ router.get('/', async (req, res) => {
 // Loads Dashboard page
 router.get('/dashboard', async (req, res) => {
   try {
-    const dbPostData = await Post.findAll({
-      where: {
-        user_id: 1
-      },
-      include: [{
-        model: User
-      }
-      ],
-    });
-    const posts = dbPostData.map(
-      (post) => serialize(post));
-    res.render('dashboard', {
-      posts,
-      loggedIn: req.session.loggedIn,
-    });
+    if (req.session.loggedIn) {
+      const dbPostData = await Post.findAll({
+        where: {
+          user_id: req.session.user_id
+        },
+        include: [{
+          model: User
+        }],
+      });
+      const posts = dbPostData.map(
+        (post) => serialize(post));
+      res.render('dashboard', {
+        posts,
+        loggedIn: req.session.loggedIn,
+      });
+    } else {
+      res.redirect('/login');
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

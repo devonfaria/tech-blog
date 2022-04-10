@@ -5,13 +5,12 @@ const newCommentHandler = async (event) => {
 
   // Grab values from form input
   const comment = document.getElementById('comment').value.trim();
-  const userId = req.session.user_id;
   const postId = formId;
   // Makes Post request to add comment
-  if (comment && userId && postId) {
+  if (comment && postId) {
     const response = await fetch('/api/comments', {
       method: 'POST',
-      body: JSON.stringify({ comment, userId, postId }),
+      body: JSON.stringify({ comment, postId }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
