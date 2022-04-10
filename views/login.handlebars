@@ -1,23 +1,20 @@
-<div class="row justify-space-between-md">
-  <div class="login-card">
-    <h2 class="page-title">Login</h2>
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">Email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">Password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
-      </div>
-    </form>
-    <div class="form-group">
-        <a href=""><button class="btn btn-primary" type="submit">Sign Up</button></a>
-    </div>
+<form class="mt-5 g-3">
+  <h2 class="form-title">Please enter your username and password</h2>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Email</label>
+    <input type="text" class="form-control" id="email-login formGroupExampleInput">
   </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Password</label>
+    <input type="password" class="form-control" id="formGroupExampleInput2 password-login">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Login</button>
+  </div>
+</form>
+<p>Need to create an account?</p>
+<div class="form-group">
+  <a href=""><button class="btn btn-primary" type="submit">Sign Up</button></a>
 </div>
 
 <script src="./js/login.js"></script>

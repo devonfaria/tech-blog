@@ -1,10 +1,11 @@
-<div class=" card comment-card">
-  <div class="comment-header">
-    <h4>Posted by {{user.username}} on Date: {{format_date createdAt}}</h4>
+<div class="card comment-card">
+  <div class="card-header comment-header">
+    {{user.username}}
   </div>
-  <div class="comment-body">
-    <p>
-      "{{comment}}"
-    </p>
+  <div class="card-body comment-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{comment}}</p>
+      <footer class="blockquote-footer">Posted {{format_date createdAt}}</footer>
+    </blockquote>
   </div>
 </div>
