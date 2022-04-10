@@ -10,6 +10,10 @@
   </div>
 </div>
 <br>
+{{#if matchesUser}}
+<button class="delete" id="{{post.id}}">Delete</button>
+{{/if}}
+<br>
 <h4>Comments</h4>
 <br>
 {{#each comments}}

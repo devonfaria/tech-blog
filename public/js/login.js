@@ -13,7 +13,7 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       alert('Failed to log in.');
     }
@@ -21,7 +21,3 @@ const loginFormHandler = async (event) => {
 };
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-
-document.querySelector('.signup').addEventListener('click', () => {
-  document.location.replace('/signup')
-});

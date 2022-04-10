@@ -72,6 +72,7 @@ router.get('/posts', async (req, res) => {
 // Loads single Post page
 router.get('/posts/:id', async (req, res) => {
   try {
+    let matchesUser = false;
     const postData = await Post.findOne({
       where: {
         id: req.params.id
@@ -88,14 +89,17 @@ router.get('/posts/:id', async (req, res) => {
         model: User
       }]
     });
-
+    if (postData.user.id === req.session.user_id) {
+      console.log('User matches the post!');
+      matchesUser = true;
+    }
+    console.log('1', matchesUser);
     const post = serialize(postData);
     const comments = serialize(commentData);
-    console.log('Post: ', post);
-    console.log('Comments: ', comments);
     res.render('single-post', {
       post,
       comments,
+      matchesUser,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -118,7 +122,7 @@ router.get('/addpost', (req, res) => {
 // Renders the log-in screen if session is not logged in
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    return res.redirect('/');
+    return res.redirect('/dashboard');
   }
   res.render('login');
 });
