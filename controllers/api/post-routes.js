@@ -35,6 +35,22 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Update Post by ID
+router.put('/', (req, res) => {
+  Post.update({
+    title: req.body.title,
+    content: req.body.content
+  },
+    {
+      where: {
+        id: req.body.postId,
+      },
+    }
+  ).then((update) => {
+    res.json(update);
+  });
+});
+
 // Delete Post by ID
 router.delete('/', async (req, res) => {
   try {

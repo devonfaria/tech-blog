@@ -11,8 +11,27 @@
 </div>
 <br>
 {{#if matchesUser}}
-<button class="delete" id="{{post.id}}">Delete</button>
+<button class="display-form">Update Post</button>
+<button class="delete">Delete</button>
 {{/if}}
+<div class="row justify-space-between-md">
+  <div class="update-card hidden">
+    <h2 class="page-title">Update your post</h2>
+    <form class="form comment-form" id="{{post.id}}">
+      <div class="form-group">
+        <label for="title">New post title: </label>
+        <input class="form-input" type="text" id="title" />
+      </div>
+      <div class="form-group">
+        <label for="content">Please fill in post body: </label>
+        <input class="form-input" type="text" id="content" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary update" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
 <br>
 <h4>Comments</h4>
 <br>
