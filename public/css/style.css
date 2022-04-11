@@ -29,3 +29,11 @@ nav div {
   text-decoration: none;
   opacity: 0.8;
 }
+
+footer {
+  color: white;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
