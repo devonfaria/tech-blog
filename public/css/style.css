@@ -12,12 +12,29 @@ nav div {
   padding: 1rem;
 }
 
+.logo {
+  height: 75px;
+}
+
+.nav-link {
+  font-size: 18px;
+}
+
+.nav-item {
+  padding: 0 5px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
 #dark-header {
  color: white;
 }
 
 .post-link {
   text-decoration: none;
+  color: #AFD4CB;
 }
 
 .post-link:hover {
@@ -30,10 +47,22 @@ nav div {
   opacity: 0.8;
 }
 
-footer {
+.comment-card {
+  
+}
+
+.footer {
   color: white;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer-block {
+  display: relative
+}
+
+.update-card {
+  width: 50%;;
 }

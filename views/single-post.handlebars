@@ -1,9 +1,10 @@
-<div class="post-card mt-5">
-  <div class="post-header">
+<div class=" card post-card mt-5">
+  <div class="card-header d-flex justify-content-between">
     <h3>{{post.title}}</h3>
-    <h4>Posted by {{post.user.username}} on Date: {{format_date post.createdAt}}</h4>
+    <p class="mb-4">Posted by {{post.user.username}} on Date: {{format_date post.createdAt}}
+    </p>
   </div>
-  <div class="post-body">
+  <div class=" card-body post-body">
     <p>
       "{{post.content}}"
     </p>
@@ -16,17 +17,17 @@
 <button class="delete btn btn-primary">Delete</button>
 {{/if}}
 {{/if}}
-<div class="row justify-space-between-md">
+<div class="row justify-space-between-md mt-5">
   <div class="update-card hidden">
-    <h2 class="page-title">Update your post</h2>
+    <h2 class="form-title">Update your post</h2>
     <form class="form update-form" id="{{post.id}}">
-      <div class="form-group">
-        <label for="title">New post title: </label>
-        <input class="form-input" type="text" id="title" />
+      <div class="form-group mt-3">
+        <label for="new title">New post title: </label>
+        <input class="form-control" type="text" id="title" />
       </div>
-      <div class="form-group">
-        <label for="content">Please fill in post body: </label>
-        <input class="form-input" type="text" id="content" />
+      <div class="form-group mt-3">
+        <label for="new content">What did you want to say? </label>
+        <textarea class="form-control" type="text" id="content"></textarea>
       </div>
       <div class="form-group">
         <button class="btn btn-primary update" type="submit">Submit</button>
@@ -35,7 +36,7 @@
   </div>
 </div>
 <br>
-<h4>Comments</h4>
+<h4 class="mb-3">Comments</h4>
 {{#each comments}}
 {{> comment-card}}
 {{/each}}
@@ -51,6 +52,12 @@
   </div>
 </form>
 {{else}}
-<h5 class="mt-4">You need to log in to leave comments.</h5>
-<a href="/login"><button>Login</button></a>
+<h5 class="mt-4 mb-4">You need to log in to leave comments.</h5>
+<a href="/login"><button class="btn btn-primary mb-10">Login</button></a>
 {{/if}}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
