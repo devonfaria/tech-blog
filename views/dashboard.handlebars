@@ -1,11 +1,12 @@
 {{#if loggedIn}}
-<h1 class="mt-5">Dashboard</h1>
+<h1 class="mt-5">Dashboard / {{posts.[0].user.username}}</h1>
 <br>
-<a href="/addpost"><button>Add Post</button></a>
-<h2>Your Blog Posts</h2>
+<a href="/addpost"><button class="btn btn-primary">Add Post</button></a>
+<br>
+<h3 class="mt-5 mb-3">Your Blog Posts</h3>
 {{#each posts}}
 {{> post-card}}
 {{/each}}
 {{else}}
-<h1>You need to log in to view your Dashboard!</h1>
+<h3>You need to log in to view your Dashboard!</h3>
 {{/if}}

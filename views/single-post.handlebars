@@ -1,4 +1,4 @@
-<div class="post-card">
+<div class="post-card mt-5">
   <div class="post-header">
     <h3>{{post.title}}</h3>
     <h4>Posted by {{post.user.username}} on Date: {{format_date post.createdAt}}</h4>
@@ -12,8 +12,8 @@
 <br>
 {{#if loggedIn}}
 {{#if matchesUser}}
-<button class="display-form">Update Post</button>
-<button class="delete">Delete</button>
+<button class="display-form btn btn-primary mr-2">Update Post</button>
+<button class="delete btn btn-primary">Delete</button>
 {{/if}}
 {{/if}}
 <div class="row justify-space-between-md">
@@ -51,6 +51,6 @@
   </div>
 </form>
 {{else}}
-<h3>You need to log in to leave comments!</h3>
+<h5 class="mt-4">You need to log in to leave comments.</h5>
 <a href="/login"><button>Login</button></a>
 {{/if}}

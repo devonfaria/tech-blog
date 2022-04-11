@@ -1,24 +1,11 @@
-{{!-- <div class="card post-card">
-  <div class="post-header">
-    <a href="/posts/{{id}}">
-      <h3>{{title}}</h3>
-    </a>
-    <h4 class="post-details">Posted by {{user.username}} on {{format_date createdAt}}</h4>
-  </div>
-  <div class="post-body">
-    <p>
-      "{{content}}"
-    </p>
-  </div>
-</div> --}}
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">
-    <a href="/posts/{{id}}">
+<div class="card text-white bg-dark mb-3">
+  <div class="card-header" id="dark-header">
+    <a href="/posts/{{id}}" class="post-link">
       <h3>{{title}}</h3>
     </a>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Posted by {{user.username}} on {{format_date createdAt}}</h5>
+    <h6 class="card-title">Posted by {{user.username}} on {{format_date createdAt}}</h6>
     <p class="card-text">{{content}}</p>
   </div>
 </div>

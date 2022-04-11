@@ -12,3 +12,20 @@ nav div {
   padding: 1rem;
 }
 
+#dark-header {
+ color: white;
+}
+
+.post-link {
+  text-decoration: none;
+}
+
+.post-link:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.post-link:link {
+  text-decoration: none;
+  opacity: 0.8;
+}
