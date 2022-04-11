@@ -56,7 +56,7 @@ Then, clone this repository to your local computer, and open up the folder in yo
 
 `npm install`
 
-This will download the node modules MySQL2, Express, Nodemon, Sequelize, and DOTENV that this application needs to run on your local computer. After install, you will run the following command to open a MySQL shell in your terminal: 
+This will download the node modules MySQL2, Express, Express Handlebars, BCrypt, Nodemon, Sequelize, and DOTENV that this application needs to run on your local computer. After install, you will run the following command to open a MySQL shell in your terminal: 
 
 `mysql -u root` 
 
@@ -75,6 +75,8 @@ And then type:
 If the last message in the terminal says "App listening on port 3001!", then you have installed the program correctly. If you ever need to shut down this server application use this command:
 
 `^C`
+
+If you would like further instruction on making this a server-side application, then [contact me.](https://github.com/devonfaria)
 
 ## Technologies
 
